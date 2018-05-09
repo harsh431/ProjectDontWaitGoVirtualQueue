@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Don\'t Wait - Go Virtual Queue</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_sign_up">Sign Up</string>
+</resources>
