@@ -28,6 +28,8 @@ import java.net.Socket;
 import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends AppCompatActivity {
+    String firstname="";
+    String lastname="";
 
 
 
@@ -67,6 +69,11 @@ public class MainActivity extends AppCompatActivity {
                 TextView textView = findViewById(R.id.login_successful_text);
                 textView.setText("Login is successful!");
                 textView.setVisibility(View.VISIBLE);
+                Intent intent = new Intent(getApplicationContext(),Login_Successful.class);
+                intent.putExtra("firstname",firstname);
+                intent.putExtra("lastname",lastname);
+                intent.putExtra("email",email.getText());
+                startActivity(intent);
             }
             else
             {
@@ -87,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Socket s = new Socket("45.115.19.229",1234);
+                Socket s = new Socket("45.115.18.156",5982);
                 Log.v("harshdemo","Socket ");
                 DataOutputStream dos = new DataOutputStream(s.getOutputStream());
                 DataInputStream dis = new DataInputStream(s.getInputStream());
@@ -95,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 dos.writeUTF(strings[0]);
                 dos.writeUTF(strings[1]);
                 String result = dis.readUTF();
+                 firstname = dis.readUTF();
+                 lastname = dis.readUTF();
                 dos.close();
                 dis.close();
                 s.close();

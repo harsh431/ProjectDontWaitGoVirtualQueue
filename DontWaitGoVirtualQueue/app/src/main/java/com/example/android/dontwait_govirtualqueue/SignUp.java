@@ -26,7 +26,7 @@ public class SignUp extends AppCompatActivity {
         protected Void doInBackground(String... strings) {
 
             try {
-                Socket s =new Socket("45.115.19.229",1234);
+                Socket s =new Socket("10.0.0.6",5982);
                 DataOutputStream dos = new DataOutputStream(s.getOutputStream());
                 dos.writeUTF("store");
                 dos.writeUTF(strings[0]);
